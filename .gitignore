@@ -41,3 +41,4 @@ app-example
 
 .vscode/
 Note.md
+.env.local
