@@ -1,9 +1,7 @@
 import '@/app/global.css';
-import {useFonts} from 'expo-font';
-import {Stack} from 'expo-router';
-import {hide} from 'expo-splash-screen';
-
 import * as Sentry from '@sentry/react-native';
+import {useFonts} from 'expo-font';
+import {SplashScreen, Stack} from 'expo-router';
 import {useEffect} from 'react';
 
 Sentry.init({
@@ -38,7 +36,7 @@ export default Sentry.wrap(function RootLayout() {
 		if (error) {
 			throw new Error('Error loading fonts:', error);
 		}
-		if (fontsLoaded) hide();
+		if (fontsLoaded) SplashScreen.hideAsync();
 	}, [error, fontsLoaded]);
 
 	return <Stack screenOptions={{headerShown: false}} />;
