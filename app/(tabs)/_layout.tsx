@@ -1,5 +1,7 @@
+import TabBarIcon from '@/components/TabBarIcon';
+import {images} from '@/constants';
 import useAuthStore from '@/store/auth.store';
-import {Redirect, Slot} from 'expo-router';
+import {Redirect, Tabs} from 'expo-router';
 
 export default function TabsLayout() {
 	const {isAuthenticated} = useAuthStore();
@@ -8,5 +10,83 @@ export default function TabsLayout() {
 		return <Redirect href='/sign-in' />;
 	}
 
-	return <Slot />;
+	return (
+		<Tabs
+			screenOptions={{
+				headerShown: false,
+				tabBarShowLabel: false,
+				tabBarBadgeStyle: {
+					borderTopLeftRadius: 50,
+					borderTopRightRadius: 50,
+					borderBottomLeftRadius: 50,
+					borderBottomRightRadius: 50,
+					marginHorizontal: 20,
+					height: 80,
+					position: 'absolute',
+					bottom: 40,
+					backgroundColor: 'white',
+					shadowColor: '#1a1a1a',
+					shadowOffset: {
+						width: 0,
+						height: 2,
+					},
+					shadowOpacity: 0.1,
+					shadowRadius: 4,
+					elevation: 5,
+				},
+			}}>
+			<Tabs.Screen
+				name='index'
+				options={{
+					title: 'Home',
+					tabBarIcon: ({focused}) => (
+						<TabBarIcon
+							focused={focused}
+							icon={images.home}
+							title='Home'
+						/>
+					),
+				}}
+			/>
+			<Tabs.Screen
+				name='search'
+				options={{
+					title: 'Search',
+					tabBarIcon: ({focused}) => (
+						<TabBarIcon
+							focused={focused}
+							icon={images.search}
+							title='Search'
+						/>
+					),
+				}}
+			/>
+			<Tabs.Screen
+				name='cart'
+				options={{
+					title: 'Cart',
+					tabBarIcon: ({focused}) => (
+						<TabBarIcon
+							focused={focused}
+							icon={images.bag}
+							title='Cart'
+						/>
+					),
+				}}
+			/>
+			<Tabs.Screen
+				name='profile'
+				options={{
+					title: 'Profile',
+					tabBarIcon: ({focused}) => (
+						<TabBarIcon
+							focused={focused}
+							icon={images.person}
+							title='Profile'
+						/>
+					),
+				}}
+			/>
+		</Tabs>
+	);
 }
