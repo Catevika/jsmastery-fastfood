@@ -15,7 +15,7 @@ export default function TabsLayout() {
 			screenOptions={{
 				headerShown: false,
 				tabBarShowLabel: false,
-				tabBarBadgeStyle: {
+				tabBarStyle: {
 					borderTopLeftRadius: 50,
 					borderTopRightRadius: 50,
 					borderBottomLeftRadius: 50,
@@ -26,10 +26,7 @@ export default function TabsLayout() {
 					bottom: 40,
 					backgroundColor: 'white',
 					shadowColor: '#1a1a1a',
-					shadowOffset: {
-						width: 0,
-						height: 2,
-					},
+					shadowOffset: {width: 0, height: 2},
 					shadowOpacity: 0.1,
 					shadowRadius: 4,
 					elevation: 5,
