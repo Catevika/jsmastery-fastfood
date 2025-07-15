@@ -13,11 +13,14 @@ if (
 	!process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID ||
 	!process.env.EXPO_PUBLIC_APPWRITE_PLATFORM ||
 	!process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID ||
-	!process.env.EXPO_PUBLIC_APPWRITE_USER_COLLECTION_ID
+	!process.env.EXPO_PUBLIC_APPWRITE_BUCKET_ID ||
+	!process.env.EXPO_PUBLIC_APPWRITE_USER_COLLECTION_ID ||
+	!process.env.EXPO_PUBLIC_APPWRITE_CATEGORIES_COLLECTION_ID ||
+	!process.env.EXPO_PUBLIC_APPWRITE_MENU_COLLECTION_ID ||
+	!process.env.EXPO_PUBLIC_APPWRITE_CUSTOMIZATIONS_COLLECTION_ID ||
+	!process.env.EXPO_PUBLIC_APPWRITE_MENU_CUSTOMIZATIONS_COLLECTION_ID
 ) {
-	throw new Error(
-		'Please add APPWRITE_ENDPOINT, APPWRITE_PROJECT_ID, APPWRITE_PLATFORM, APPWRITE_DATABASE_ID, APPWRITE_USER_COLLECTION_ID to .env',
-	);
+	throw new Error('Please add the appwrite environment variables to .env');
 }
 
 export const appwriteConfig = {
@@ -25,8 +28,17 @@ export const appwriteConfig = {
 	project: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID.toString(),
 	platform: process.env.EXPO_PUBLIC_APPWRITE_PLATFORM.toString(),
 	databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASE_ID.toString(),
+	bucketId: process.env.EXPO_PUBLIC_APPWRITE_BUCKET_ID.toString(),
 	userCollectionId:
 		process.env.EXPO_PUBLIC_APPWRITE_USER_COLLECTION_ID.toString(),
+	categoriesCollectionId:
+		process.env.EXPO_PUBLIC_APPWRITE_CATEGORIES_COLLECTION_ID.toString(),
+	menuCollectionId:
+		process.env.EXPO_PUBLIC_APPWRITE_MENU_COLLECTION_ID.toString(),
+	customizationsCollectionId:
+		process.env.EXPO_PUBLIC_APPWRITE_CUSTOMIZATIONS_COLLECTION_ID.toString(),
+	menuCustomizationsCollectionId:
+		process.env.EXPO_PUBLIC_APPWRITE_MENU_CUSTOMIZATIONS_COLLECTION_ID.toString(),
 };
 
 export const client = new Client();
